@@ -82,6 +82,8 @@ class OrderFactory implements OrderFactoryInterface
             $this->setItemQuantity($item, $quantity);
         }
 
+        $this->entityManager->persist($this->order);
+
         // Run events
         if ($orderBeforeId === null) {
             $event = new GenericEvent($this->order);
@@ -91,7 +93,6 @@ class OrderFactory implements OrderFactoryInterface
             $this->eventDispatcher->dispatch(Events::ORDER_UPDATED, $event);
         }
 
-        $this->entityManager->persist($this->order);
         $this->entityManager->flush();
     }
 

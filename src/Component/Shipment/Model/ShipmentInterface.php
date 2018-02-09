@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 
 interface ShipmentInterface
 {
-    public function getId(): UuidInterface ;
+    public function getId(): ?string ;
 
     public function setName(string $name): void ;
 

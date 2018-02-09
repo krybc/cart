@@ -9,9 +9,9 @@ use Ramsey\Uuid\UuidInterface;
 interface DiscountInterface
 {
     /**
-     * @return UuidInterface
+     * @return string
      */
-    public function getId(): UuidInterface ;
+    public function getId(): ?string ;
 
     /**
      * @param string $name

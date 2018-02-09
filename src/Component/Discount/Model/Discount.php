@@ -12,7 +12,7 @@ class Discount implements DiscountInterface
     use TimestampableTrait;
 
     /**
-     * @var UuidInterface
+     * @var string
      */
     private $id;
 
@@ -34,7 +34,7 @@ class Discount implements DiscountInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): UuidInterface
+    public function getId(): ?string
     {
         return $this->id;
     }

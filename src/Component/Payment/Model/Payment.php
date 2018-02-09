@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Component\Payment\Model;
 
 use App\Component\Core\Model\TimestampableTrait;
-use Ramsey\Uuid\UuidInterface;
 
 class Payment implements PaymentInterface
 {
     use TimestampableTrait;
 
     /**
-     * @var UuidInterface
+     * @var string
      */
     private $id;
 
@@ -29,7 +28,7 @@ class Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): UuidInterface
+    public function getId(): ?string
     {
         return $this->id;
     }

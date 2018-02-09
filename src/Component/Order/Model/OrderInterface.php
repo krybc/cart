@@ -14,7 +14,7 @@ interface OrderInterface
     /**
      * @return string
      */
-    public function getId(): string ;
+    public function getId(): ?string ;
 
     /**
      * @param OrderItemInterface $item

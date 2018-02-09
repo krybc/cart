@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Component\Shipment\Model;
 
 use App\Component\Core\Model\TimestampableTrait;
-use Ramsey\Uuid\UuidInterface;
 
 class Shipment implements ShipmentInterface
 {
     use TimestampableTrait;
 
     /**
-     * @var UuidInterface
+     * @var string
      */
     private $id;
 
@@ -29,7 +28,7 @@ class Shipment implements ShipmentInterface
     /**
      * {@inheritdoc}
      */
-    public function getId(): UuidInterface
+    public function getId(): ?string
     {
         return $this->id;
     }

@@ -34,12 +34,12 @@ class OrderItem implements OrderItemInterface
     /**
      * @var float
      */
-    private $priceTotal;
+    private $priceTotal = 0;
 
     /**
      * {@inheritdoc}
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }

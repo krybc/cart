@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\Component\Payment\Model;
 
-use Ramsey\Uuid\UuidInterface;
-
 interface PaymentInterface
 {
     /**
-     * @return UuidInterface
+     * @return string
      */
-    public function getId(): UuidInterface ;
+    public function getId(): ?string ;
 
     /**
      * @param string $name

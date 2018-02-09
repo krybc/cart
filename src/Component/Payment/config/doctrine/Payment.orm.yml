@@ -1,0 +1,28 @@
+App\Component\Payment\Model\Payment:
+    type: mappedSuperclass
+    repositoryClass: App\Component\Payment\Repository\PaymentRepository
+    table: cart_payment
+    id:
+        id:
+            type: guid
+            length: 36
+            generator:
+                strategy: UUID
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        price:
+            column: price
+            type: float
+            nullable: false

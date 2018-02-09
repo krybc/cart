@@ -1,0 +1,44 @@
+App\Component\Order\Model\OrderItem:
+    type: mappedSuperclass
+    table: cart_order_item
+    id:
+        id:
+            type: guid
+            length: 36
+            generator:
+                strategy: UUID
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        quantity:
+            column: quantity
+            type: integer
+            nullable: false
+        priceTotal:
+            column: price_total
+            type: float
+            nullable: false
+            options:
+                default: 0.00
+    manyToOne:
+        order:
+            targetEntity: App\Component\Order\Model\Order
+            inversedBy: items
+            joinColumn:
+                name: order_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: CASCADE
+        product:
+            targetEntity: App\Component\Product\Model\Product
+            inversedBy: orderItem
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+                nullable: false

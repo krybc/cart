@@ -1,0 +1,33 @@
+{% extends 'layout/app.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2>Lista produktów</h2>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Produkt</th>
+                        <th>Cena</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price|number_format(2, ',', ' ') }} {{ 'app.default.currencyDescription'|trans }}</td>
+                            <td>
+                                {{ render(controller('App\\Controller\\Shop\\CartController::addItemForm', {'id' : product.id})) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

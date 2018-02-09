@@ -1,0 +1,28 @@
+App\Component\Shipment\Model\Shipment:
+    type: mappedSuperclass
+    repositoryClass: App\Component\Shipment\Repository\ShipmentRepository
+    table: cart_shipment
+    id:
+        id:
+            type: guid
+            length: 36
+            generator:
+                strategy: UUID
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        price:
+            column: price
+            type: float
+            nullable: false

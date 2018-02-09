@@ -1,0 +1,39 @@
+App\Component\Product\Model\Product:
+    type: mappedSuperclass
+    repositoryClass: App\Component\Product\Repository\ProductRepository
+    table: cart_product
+    id:
+        id:
+            type: guid
+            length: 36
+            generator:
+                strategy: UUID
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        image:
+            column: image
+            type: string
+            length: 255
+            nullable: true
+        price:
+            column: price
+            type: float
+            precision: 10
+            scale: 2
+            nullable: false
+    oneToMany:
+        orderItem:
+            targetEntity: App\Component\Order\Model\OrderItem
+            mappedBy: product

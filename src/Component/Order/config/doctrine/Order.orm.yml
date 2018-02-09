@@ -1,0 +1,57 @@
+App\Component\Order\Model\Order:
+    type: mappedSuperclass
+    repositoryClass: App\Component\Order\Repository\OrderRepository
+    table: cart_order
+    id:
+        id:
+            type: guid
+            length: 36
+            generator:
+                strategy: UUID
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        itemsTotal:
+            column: items_total
+            type: integer
+            nullable: false
+        itemsPriceTotal:
+            column: items_price_total
+            type: float
+            nullable: false
+            options:
+                default: 0.00
+        priceTotal:
+            column: price_total
+            type: float
+            nullable: false
+            options:
+                default: 0.00
+    oneToMany:
+        items:
+            targetEntity: App\Component\Order\Model\OrderItem
+            mappedBy: order
+            orphanRemoval: true
+            cascade: ['all']
+    manyToOne:
+        payment:
+            targetEntity: App\Component\Payment\Model\Payment
+            joinColumn:
+                name: payment_id
+                referencedColumnName: id
+        shipment:
+            targetEntity: App\Component\Shipment\Model\Shipment
+            joinColumn:
+                name: shipment_id
+                referencedColumnName: id
+        discount:
+            targetEntity: App\Component\Discount\Model\Discount
+            joinColumn:
+                name: discount_id
+                referencedColumnName: id

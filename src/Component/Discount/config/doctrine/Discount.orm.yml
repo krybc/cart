@@ -1,0 +1,37 @@
+App\Component\Discount\Model\Discount:
+    type: mappedSuperclass
+    repositoryClass: App\Component\Discount\Repository\DiscountRepository
+    table: cart_discount
+    id:
+        id:
+            type: uuid
+            length: 36
+            nullable: false
+            unique: true
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 50
+            nullable: false
+        discount:
+            column: discount
+            type: float
+            nullable: false

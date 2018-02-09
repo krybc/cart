@@ -1,0 +1,70 @@
+db:
+    default:
+      id: Id
+    discount:
+      name: Nazwa opisowa
+      code: Treść kodu
+      discount: Rabat
+    order:
+
+    orderItem:
+
+    product:
+        name: Nazwa
+        image: Zdjęcie
+        price: Cena
+
+
+app:
+    head:
+        title: Koszyk zakupowy
+    default:
+        actions: Akcje
+        currencyCode: PLN
+        currencyDescription: zł
+    cart:
+        setItemQuantity:
+            button: Zmień
+            message:
+                success: Ilość produktu zostałą zmieniona
+                failed: Wystąpiły problemy ze zmianą ilości produktu
+        addItem:
+            button: Dodaj do koszyka
+            message:
+                success: Produkt został dodany do koszyka
+                failed: Wystąpił problem z dodaniem produktu do koszyka
+        removeItem:
+            button: Usuń
+            message:
+                success: Produkt został usunięty z koszyka
+                failed: Wystąpił problem z usuwaniem produktu z koszyka
+        clear:
+            button: Wyczyść koszyk
+            message:
+                success: Koszyk został opróżniony
+                failed: Wystąpiły problemy z opróżnianiem koszyka
+        setPayment:
+            title: Płatność
+            select: Wybierz płatność
+            button: Wybierz
+            message:
+                success: Płatność została wybrana poprawnie
+                failed: Wystąpił problem z wyborem formy płatności
+        setShipment:
+            title: Dostawa
+            select: Wybierz formę dostawy
+            button: Wybierz
+            message:
+                success: Forma dostawy została wybrana
+                failed: Wystąpił problem z wyborem formy dostawy
+        setDiscount:
+            title: Wprowadź kod rabatowy
+            placeholder: Wpisz kod rabatowy
+            button: Przyznaj rabat
+            message:
+                success: Kod rabatowy został użyty
+                codeNotFound: Wprowadzony kod rabatowy nie jest poprawny
+        product:
+
+        payment:
+            selectPayment: Wybierz metodę płatności

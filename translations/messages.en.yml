@@ -1,0 +1,83 @@
+db:
+    default:
+      id: Id
+    discount:
+      name: Name
+      code: Code
+      discount: Discount
+    order:
+
+    orderItem:
+
+    product:
+        name: Name
+        image: Image
+        price: Price
+
+app:
+    head:
+        title: Cart
+    default:
+        cart: Cart
+        summary: Summary
+        remove: Remove
+        actions: Actions
+        currencyCode: PLN
+        currencyDescription: zł
+    home:
+        title: Products list
+        table:
+            column:
+                product: Product
+                price: Price
+    cart:
+        title: Cart
+        table:
+            column:
+                product: Product
+                price: Price
+                quantity: Quantity
+                discountValue: Discount value
+                summaryWithDiscount: Summary price with discount
+                toPay: To pay
+        setItemQuantity:
+            button: Change
+            message:
+                success: The product quantity has been changed
+                failed: There were problems with changing the item quantity
+        addItem:
+            button: Add to cart
+            message:
+                success: The product has been added to shopping cart
+                failed: There was a problem with adding the product to the cart
+        removeItem:
+            button: Remove
+            message:
+                success: The product has been removed from shopping cart
+                failed: There was a problem with removing the product from the cart
+        clear:
+            button: Clear the cart
+            message:
+                success: The cart is now empty
+                failed: There was a problem with clearing the cart
+        setPayment:
+            title: Payment
+            select: Choose the payment method
+            button: Choose
+            message:
+                success: The payment method has been choosen
+                failed: There was a problem with choosing the payment method
+        setShipment:
+            title: Shipment
+            select: Choose the shipping method
+            button: Choose
+            message:
+                success: The shipping method has ben choosen
+                failed: There was a problem with choosing the shipping method
+        setDiscount:
+            title: Discount
+            placeholder: Enter the discount code
+            button: Confirm the code
+            message:
+                success: Discount code has been used
+                codeNotFound: Discount code is invalid

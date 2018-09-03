@@ -7,7 +7,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Koszyk</h2>
+                        <h2>{{ 'app.cart.title'|trans }}</h2>
                     </div>
                     <div class="col-md-6 float-md-right text-sm-right">
                         {{ form_start(clearForm) }}
@@ -20,11 +20,11 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>Produkt</th>
-                        <th>Cena</th>
-                        <th>Ilość</th>
-                        <th>Razem</th>
-                        <th>Usuń</th>
+                        <th>{{ 'app.cart.table.column.product'|trans }}</th>
+                        <th>{{ 'app.cart.table.column.price'|trans }}</th>
+                        <th>{{ 'app.cart.table.column.quantity'|trans }}</th>
+                        <th>{{ 'app.default.summary'|trans }}</th>
+                        <th>{{ 'app.default.remove'|trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
 
                     <tr>
                         <td colspan="4" class="text-sm-right">
-                            Podsumowanie:
+                            {{ 'app.default.summary'|trans }}:
                         </td>
                         <td>
                             {{ order.summary.priceItemsBeforeDiscount|number_format(2, ',', ' ') }} {{ 'app.default.currencyDescription'|trans }}
@@ -56,7 +56,7 @@
                     {% if order.current.discount is not null %}
                         <tr>
                             <td colspan="4" class="text-sm-right">
-                                Kupon ({{ order.current.discount.discount }} %):
+                                {{ 'app.cart.table.column.discountValue'|trans }} ({{ order.current.discount.discount }} %):
                             </td>
                             <td>
                                 - {{ order.summary.discount|number_format(2, ',', ' ') }} {{ 'app.default.currencyDescription'|trans }}
@@ -64,7 +64,7 @@
                         </tr>
                         <tr class="bg-info">
                             <td colspan="4" class="text-sm-right">
-                                Podsumowanie po rabacie:
+                                {{ 'app.cart.table.column.summaryWithDiscount'|trans }}:
                             </td>
                             <td>
                                 {{ order.summary.itemsPriceTotal|number_format(2, ',', ' ') }} {{ 'app.default.currencyDescription'|trans }}
@@ -73,7 +73,7 @@
                     {% else %}
                         <tr>
                             <td colspan="4" class="text-sm-right">
-                                Wprowadź kod rabatowy:
+                                {{ 'app.cart.setDiscount.placeholder'|trans }}:
                             </td>
                             <td>
                                 {{ form_start(setDiscountForm) }}
@@ -98,7 +98,7 @@
                     <tbody>
                     <tr>
                         <td>
-                            Płatność
+                            {{ 'app.cart.setPayment.title'|trans }}
                         </td>
                         <td>
                             {{ form_start(setPaymentForm) }}
@@ -116,7 +116,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Dostawa
+                            {{ 'app.cart.setShipment.title'|trans }}
                         </td>
                         <td>
                             {{ form_start(setShipmentForm) }}
@@ -134,7 +134,7 @@
                     </tr>
                     <tr class="bg-info">
                         <td>
-                            Do zapłaty
+                            {{ 'app.cart.table.column.toPay'|trans }}
                         </td>
                         <td>
                             {{ order.summary.priceTotal|number_format(2, ',', ' ') }} {{ 'app.default.currencyDescription'|trans }}

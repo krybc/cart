@@ -14,15 +14,32 @@ db:
         image: Zdjęcie
         price: Cena
 
-
 app:
     head:
         title: Koszyk zakupowy
     default:
+        cart: Koszyk
+        summary: Razem
+        remove: Usuń
         actions: Akcje
         currencyCode: PLN
         currencyDescription: zł
+    home:
+        title: Lista produktów
+        table:
+            column:
+                product: Produkt
+                price: Cena
     cart:
+        title: Koszyk
+        table:
+            column:
+                product: Produkt
+                price: Cena
+                quantity: Ilość
+                discountValue: Rabat
+                summaryWithDiscount: Cena po rabacie
+                toPay: Do zapłaty
         setItemQuantity:
             button: Zmień
             message:
@@ -64,7 +81,3 @@ app:
             message:
                 success: Kod rabatowy został użyty
                 codeNotFound: Wprowadzony kod rabatowy nie jest poprawny
-        product:
-
-        payment:
-            selectPayment: Wybierz metodę płatności

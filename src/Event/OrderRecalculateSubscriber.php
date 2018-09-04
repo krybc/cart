@@ -10,6 +10,7 @@ use App\Component\Order\Model\OrderItemInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\VarDumper\VarDumper;
 
 class OrderRecalculateSubscriber implements EventSubscriberInterface
 {
@@ -35,6 +36,7 @@ class OrderRecalculateSubscriber implements EventSubscriberInterface
     {
         /** @var OrderInterface $entity */
         $entity = $event->getSubject();
+
 
         $itemsTotal = 0;
         $itemsPriceTotal = 0;

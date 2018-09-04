@@ -37,7 +37,10 @@ class AddItemType extends AbstractType
             'submit',
             SubmitType::class,
             [
-                'label' => 'app.cart.addItem.button'
+                'label' => 'app.cart.addItem.button',
+                'attr' => [
+                    'icon' => 'fa fa-cart-plus'
+                ]
             ]
         );
     }

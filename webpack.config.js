@@ -4,12 +4,10 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
+    .enableSourceMaps(!Encore.isProduction())
     .autoProvidejQuery()
-    .enableSassLoader(function(sassOptions) {}, {
-        resolveUrlLoader: false
-    })
-    .enableVersioning(false)
-    .createSharedEntry('js/common', ['jquery'])
+    .enableSassLoader()
+    .enableVersioning(true)
     .addEntry('js/app', './assets/js/app.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
 ;

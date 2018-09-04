@@ -1,0 +1,15 @@
+{% macro messages() %}
+    <div id="flashes">
+        {% for type in ['success', 'error', 'info', 'warning'] %}
+            {% for message in app.session.flashbag.get(type) %}
+                {% set type = type == 'error' ? 'danger' : type %}
+                <div class="alert alert-{{ type }} alert-dismissable fade show">
+                    {{ message|trans }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endmacro %}

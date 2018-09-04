@@ -37,7 +37,10 @@ class RemoveItemType extends AbstractType
             'submit',
             SubmitType::class,
             [
-                'label' => 'app.cart.removeItem.button'
+                'label' => 'app.cart.removeItem.button',
+                'attr' => [
+                    'icon' => 'fa fa-minus-circle',
+                ]
             ]
         );
     }

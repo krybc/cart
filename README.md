@@ -1,5 +1,7 @@
 # Simple Symfony 4 cart
 
+![](./docs/preview.png)
+
 ## Requirements
 
 - composer

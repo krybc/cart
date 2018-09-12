@@ -1,0 +1,83 @@
+db:
+  default:
+    id: Id
+  discount:
+    name: Nom
+    code: Code
+    discount: Code promotionnel
+  order:
+
+  orderItem:
+
+  product:
+    name: Nom
+    image: Image
+    price: Prix
+
+app:
+  head:
+    title: Panier
+  default:
+    cart: Panier
+    summary: Total
+    remove: Supprimer
+    actions: Actions
+    currencyCode: EUR
+    currencyDescription: €
+  home:
+    title: Liste des produits
+    table:
+      column:
+        product: Produit
+        price: Prix
+  cart:
+    title: Panier
+    table:
+      column:
+        product: Produit
+        price: Prix
+        quantity: Quantité
+        discountValue: Remise promotionnel
+        summaryWithDiscount: Total avec remise promotionnel
+        toPay: A payer
+    setItemQuantity:
+      button: Modifier
+      message:
+        success: La quantité du produit a été modifié
+        failed: Erreur lors de la modification de la quantité du produit
+    addItem:
+      button: Ajouter au panier
+      message:
+        success: Le produit a été ajouté au panier
+        failed: Erreur lors de l'ajout du produit au panier
+    removeItem:
+      button: Supprimer
+      message:
+        success: Le produit a été supprimé du panier
+        failed: Erreur lors de la suppression du produit du panier
+    clear:
+      button: Vider le panier
+      message:
+        success: Votre panier est vide
+        failed: Erreur lors du vidage du panier
+    setPayment:
+      title: Paiement
+      select: Choisir la méthode de paiement
+      button: Choisir
+      message:
+        success: La méthode de paiemant a été choisit
+        failed: Erreur lors du choix de la méthode de paiement
+    setShipment:
+      title: Livraison
+      select: Choisir le moyen de livraison
+      button: Choisir
+      message:
+        success: Le moyen de livraison a été choisit
+        failed: Erreur lors du choix du moyen de livraison
+    setDiscount:
+      title: Code promotionnel
+      placeholder: Entrer le code promo
+      button: Confirmer le code
+      message:
+        success: Le code promo a été utilisé
+        codeNotFound: Ce code promo n'existe pas

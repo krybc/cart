@@ -11,11 +11,10 @@ use App\Form\SetDiscountType;
 use App\Form\SetItemQuantityType;
 use App\Form\SetPaymentType;
 use App\Form\SetShipmentType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends Controller
 {
@@ -70,8 +69,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/addItem/{id}", name="cart.addItem")
-     * @Method("POST")
+     * @Route("/cart/addItem/{id}", name="cart.addItem", methods={"POST"})
      */
     public function addItem(Request $request, Product $product): Response
     {
@@ -87,8 +85,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/removeItem/{id}", name="cart.removeItem")
-     * @Method("POST")
+     * @Route("/cart/removeItem/{id}", name="cart.removeItem", methods={"POST"})
      */
     public function removeItem(Request $request, OrderItem $item): Response
     {
@@ -104,8 +101,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/setItemQuantity/{id}", name="cart.setItemQuantity")
-     * @Method("POST")
+     * @Route("/cart/setItemQuantity/{id}", name="cart.setItemQuantity", methods={"POST"})
      */
     public function setQuantity(Request $request, OrderItem $item): Response
     {
@@ -121,8 +117,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/clear", name="cart.clear")
-     * @Method("POST")
+     * @Route("/cart/clear", name="cart.clear", methods={"POST"})
      */
     public function clear(Request $request): Response
     {
@@ -139,8 +134,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/setPayment", name="cart.setPayment")
-     * @Method("POST")
+     * @Route("/cart/setPayment", name="cart.setPayment", methods={"POST"})
      */
     public function setPayment(Request $request): Response
     {
@@ -157,8 +151,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/setShipment", name="cart.setShipment")
-     * @Method("POST")
+     * @Route("/cart/setShipment", name="cart.setShipment", methods={"POST"})
      */
     public function setShipment(Request $request): Response
     {
@@ -175,8 +168,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/setDiscount", name="cart.setDiscount")
-     * @Method("POST")
+     * @Route("/cart/setDiscount", name="cart.setDiscount", methods={"POST"})
      */
     public function setDiscount(Request $request): Response
     {

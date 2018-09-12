@@ -18,7 +18,6 @@
 - rename `.env.dist` file to `.env` and type your database connection data
 - run `php bin/console doctrine:migrations:migrate` to add database tables
 - run `php bin/console doctrine:fixtures:load` to load default products, payments, shipments and discount codes data
-- run `yarn encore dev` to build assets
 - map host to `public` folder
 - enjoy that shit in web browser
 

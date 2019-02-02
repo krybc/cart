@@ -2,20 +2,20 @@
 
 namespace App\Controller\Shop;
 
+use App\Component\Order\OrderFactory;
 use App\Component\Product\Repository\ProductRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class HomeController extends Controller
+class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, OrderFactory $order): Response
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
         $products = $productRepository->findAll();
 
         return $this->render('home/index.html.twig', [

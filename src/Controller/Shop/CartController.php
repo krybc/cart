@@ -3,6 +3,7 @@
 namespace App\Controller\Shop;
 
 use App\Component\Order\Model\OrderItem;
+use App\Component\Order\OrderFactory;
 use App\Component\Product\Model\Product;
 use App\Form\AddItemType;
 use App\Form\ClearCartType;
@@ -11,20 +12,35 @@ use App\Form\SetDiscountType;
 use App\Form\SetItemQuantityType;
 use App\Form\SetPaymentType;
 use App\Form\SetShipmentType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\TranslatorInterface;
 
-class CartController extends Controller
+class CartController extends AbstractController
 {
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    /**
+     * @var OrderFactory
+     */
+    private $orderFactory;
+
+    public function __construct(TranslatorInterface  $translator, OrderFactory $orderFactory)
+    {
+        $this->translator = $translator;
+        $this->orderFactory = $orderFactory;
+    }
+
     /**
      * @Route("/cart", name="cart")
      */
-    public function index()
+    public function index(OrderFactory $order)
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
-
         $clearForm = $this->createForm(ClearCartType::class, $order->getCurrent());
         $setPaymentForm = $this->createForm(SetPaymentType::class, $order->getCurrent());
         $setShipmentForm = $this->createForm(SetShipmentType::class, $order->getCurrent());
@@ -77,8 +93,8 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->addItem($product, 1);
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.addItem.message.success'));
+            $this->orderFactory->addItem($product, 1);
+            $this->addFlash('success', $this->translator->trans('app.cart.addItem.message.success'));
         }
 
         return $this->redirectToRoute('cart');
@@ -93,8 +109,8 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->removeItem($item);
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.removeItem.message.success'));
+            $this->orderFactory->removeItem($item);
+            $this->addFlash('success', $this->translator->trans('app.cart.removeItem.message.success'));
         }
 
         return $this->redirectToRoute('cart');
@@ -109,8 +125,8 @@ class CartController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->setItemQuantity($item, $form->getData()->getQuantity());
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.setItemQuantity.message.success'));
+            $this->orderFactory->setItemQuantity($item, $form->getData()->getQuantity());
+            $this->addFlash('success', $this->translator->trans('app.cart.setItemQuantity.message.success'));
         }
 
         return $this->redirectToRoute('cart');
@@ -121,13 +137,12 @@ class CartController extends Controller
      */
     public function clear(Request $request): Response
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
-        $form = $this->createForm(ClearCartType::class, $order->getCurrent());
+        $form = $this->createForm(ClearCartType::class, $this->orderFactory->getCurrent());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->clear();
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.clear.message.success'));
+            $this->orderFactory->clear();
+            $this->addFlash('success', $this->translator->trans('app.cart.clear.message.success'));
         }
 
         return $this->redirectToRoute('home');
@@ -136,15 +151,14 @@ class CartController extends Controller
     /**
      * @Route("/cart/setPayment", name="cart.setPayment", methods={"POST"})
      */
-    public function setPayment(Request $request): Response
+    public function setPayment(Request $request, OrderFactory $order): Response
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
         $form = $this->createForm(SetPaymentType::class, $order->getCurrent());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->setPayment($form->getData()->getPayment());
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.setPayment.message.success'));
+            $this->orderFactory->setPayment($form->getData()->getPayment());
+            $this->addFlash('success', $this->translator->trans('app.cart.setPayment.message.success'));
         }
 
         return $this->redirectToRoute('cart');
@@ -155,13 +169,12 @@ class CartController extends Controller
      */
     public function setShipment(Request $request): Response
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
-        $form = $this->createForm(SetShipmentType::class, $order->getCurrent());
+        $form = $this->createForm(SetShipmentType::class, $this->orderFactory->getCurrent());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('App\Component\Order\OrderFactory')->setShipment($form->getData()->getShipment());
-            $this->addFlash('success', $this->get('translator')->trans('app.cart.setShipment.message.success'));
+            $this->orderFactory->setShipment($form->getData()->getShipment());
+            $this->addFlash('success', $this->translator->trans('app.cart.setShipment.message.success'));
         }
 
         return $this->redirectToRoute('cart');
@@ -172,8 +185,7 @@ class CartController extends Controller
      */
     public function setDiscount(Request $request): Response
     {
-        $order = $this->get('App\Component\Order\OrderFactory');
-        $form = $this->createForm(SetDiscountType::class, $order->getCurrent());
+        $form = $this->createForm(SetDiscountType::class, $this->orderFactory->getCurrent());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -183,10 +195,10 @@ class CartController extends Controller
             ]);
 
             if ($discount !== null) {
-                $this->get('App\Component\Order\OrderFactory')->setDiscount($discount);
-                $this->addFlash('success', $this->get('translator')->trans('app.cart.setDiscount.message.success'));
+                $this->orderFactory->setDiscount($discount);
+                $this->addFlash('success', $this->translator->trans('app.cart.setDiscount.message.success'));
             } else {
-                $this->addFlash('danger', $this->get('translator')->trans('app.cart.setDiscount.message.codeNotFound'));
+                $this->addFlash('danger', $this->translator->trans('app.cart.setDiscount.message.codeNotFound'));
             }
         }
 

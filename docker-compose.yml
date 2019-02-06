@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: cart_db
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./var/mysql:/var/lib/mysql
+  node:
+    container_name: cart_node
+    image: node:8
+    working_dir: /var/www
+    volumes:
+      - .:/var/www:cached
+    tty: true
+  app:
+    container_name: cart_app
+    build: .docker/app
+    ports:
+      - 8000:80
+    restart: always
+    volumes:
+      - .docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - .:/var/www:cached
+    depends_on:
+      - db
+      - node
+    links:
+      - db
+      - node

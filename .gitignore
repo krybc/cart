@@ -1,10 +1,6 @@
 .idea
 public/.htaccess
 
-###> docker ###
-.data
-###< docker ###
-
 ###> symfony/framework-bundle ###
 .env.local
 /public/bundles/

@@ -1,5 +1,8 @@
 # Simple Symfony 4 cart
 
+[![pipeline status](https://gitlab.com/krybc/cart/badges/master/pipeline.svg)](https://gitlab.com/krybc/cart/commits/master)
+[![coverage report](https://gitlab.com/krybc/cart/badges/master/coverage.svg)](https://gitlab.com/krybc/cart/commits/master)
+
 ![](./docs/preview.png)
 
 ## Requirements

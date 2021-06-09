@@ -12,6 +12,8 @@
         <env name="KERNEL_CLASS" value="App\Kernel" />
         <env name="SYMFONY_PHPUNIT_VERSION" value="7.1"/>
         <env name="APP_ENV" value="test"/>
+        <ini name="xdebug.mode" value="coverage" />
+        <env name="XDEBUG_MODE" value="coverage" />
         <!-- define your env variables for the test env here -->
     </php>
 

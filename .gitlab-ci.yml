@@ -9,7 +9,7 @@ before_script:
   - apt-get update -qq
   - apt-get install -y gnupg2
   - curl --location https://deb.nodesource.com/setup_12.x | bash -
-  - apt-get install -yqq git nodejs zip unzip libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libxpm-dev zlib1g-dev libxml2-dev libexpat1-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
+  - apt-get install -yqq git nodejs libzip-dev zip unzip libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libxpm-dev zlib1g-dev libxml2-dev libexpat1-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
   - node -v
   - npm -v
   - docker-php-ext-install mbstring pdo pdo_mysql curl json intl xml zip opcache

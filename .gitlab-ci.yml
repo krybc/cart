@@ -15,6 +15,7 @@ before_script:
   - docker-php-ext-install mbstring pdo pdo_mysql curl json intl xml zip opcache
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install
+  - echo xdebug.mode=coverage > /usr/local/etc/php/conf.d/xdebug.ini
   - npm install
   - npm run dev
 

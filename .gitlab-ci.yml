@@ -35,4 +35,4 @@ test:
     - docker-php-ext-enable xdebug
     - php bin/console doctrine:migrations:migrate -n -e test
     - php bin/console doctrine:fixtures:load -n -e test
-    - php bin/phpunit --coverage-text --colors=never
+    - php bin/phpunit --configuration phpunit.xml.dist --coverage-text --colors=never

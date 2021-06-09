@@ -10,6 +10,7 @@ Encore
     .enableVersioning(true)
     .addEntry('js/app', './assets/js/app.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
+    .enableSingleRuntimeChunk()
 ;
 
 module.exports = Encore.getWebpackConfig();

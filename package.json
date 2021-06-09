@@ -8,15 +8,15 @@
         "build": "encore production"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.11.2",
-        "ajv": "^6.10.2",
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "ajv": "^8.6.0",
         "bootstrap": "^4.3.1",
-        "jquery": "^3.5.0",
-        "popper.js": "^1.15.0"
+        "jquery": "^3.5.1",
+        "popper.js": "^1.16.1"
     },
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.19.0",
-        "node-sass": "^4.13.1",
-        "sass-loader": "^6.0.7"
+        "@symfony/webpack-encore": "^1.4.0",
+        "node-sass": "^4.14.1",
+        "sass-loader": "^11.1.1"
     }
 }

@@ -15,7 +15,7 @@ services:
       - ./var/mysql:/var/lib/mysql
   node:
     container_name: cart_node
-    image: node:8
+    image: node:12
     working_dir: /var/www
     volumes:
       - .:/var/www:cached
